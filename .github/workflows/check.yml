@@ -22,5 +22,5 @@ jobs:
       - name: get-out
         id: Getout
         run: |
-          - echo ${{needs.evaluate.outputs.apr}}
+          echo ${{needs.evaluate.outputs.apr}}
     
