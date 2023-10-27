@@ -14,8 +14,8 @@ jobs:
       - name: apr
         id: GetAPR
         run: |
-          echo "test=hello" >> $GITHUB_OUTPUT
-          echo "apr1=${{env.RELEASE_APR}}" >> $GITHUB_OUTPUT
+          echo "test"=`(echo hello)` >> $GITHUB_OUTPUT
+          echo "apr1"=`(echo ${{env.RELEASE_APR}})` >> $GITHUB_OUTPUT
   run:
     needs: ["evaluate"]
     runs-on: "ubuntu-latest"
