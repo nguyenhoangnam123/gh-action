@@ -20,6 +20,7 @@ jobs:
     steps:
       - name: get-out
         id: Getout
+        run: echo "123"
         env:
           OUT: ${{join(jobs.evaluate.outputs.*, '\n')}}
     
