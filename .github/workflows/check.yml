@@ -1,7 +1,9 @@
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 env:
-  FREEZE: 0
+  FREEZE: 1
   RELEASE_APR: "nguyenhoangnam123, test"
 
 jobs:
@@ -14,12 +16,12 @@ jobs:
       - name: apr
         id: GetAPR
         run: |
-          echo "frozen"=`[["${{env.FREEZE}}" == "1"]] && echo 1 || echo 0` >> $GITHUB_OUTPUT
+          echo "frozen"=`[["${{env.FREEZE}}" == "1"]] && echo true || echo false` >> $GITHUB_OUTPUT
           echo "apr1"=`(echo ${{env.RELEASE_APR}} | jq -R 'split(",")')` >> $GITHUB_OUTPUT
   run:
     needs: ["evaluate"]
     runs-on: "ubuntu-latest"
-    if: contains(needs.evaluate.outputs.apr, github.actor) && ${{ needs.evaluate.outputs.frozen == "0" }}
+    if: contains(needs.evaluate.outputs.apr, github.actor) && needs.evaluate.outputs.frozen
     steps:
       - name: run
         run: echo "run"
