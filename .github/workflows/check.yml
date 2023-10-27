@@ -8,13 +8,12 @@ jobs:
   evaluate:
     runs-on: "ubuntu-latest"
     outputs:
-      apr: ${{steps.evaluate.outputs.apr}}
+      apr: ${{steps.GetAPR.outputs.test}}
     steps:
       - name: apr
         id: GetAPR
         run: |
-          echo "apr=$(echo ${{env.RELEASE_APR}})" >> $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
+          echo "test=hello" >> $GITHUB_OUTPUT
   print_output:
     needs: ["evaluate"]
     runs-on: "ubuntu-latest"
