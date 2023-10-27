@@ -11,7 +11,7 @@ jobs:
       apr: ${{steps.evaluate.outputs.apr}}
     steps:
       - name: apr
-        id: Get APR
+        id: GetAPR
         run: |
           - echo "apr"=`(echo ${{env.RELEASE_APR}})` >> $GITHUB_OUTPUT
           - echo $GITHUB_OUTPUT
@@ -20,7 +20,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: get-out
-        id: Get out
+        id: Getout
         run: |
           - echo ${{needs.evaluate.outputs.apr}}
     
