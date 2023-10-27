@@ -16,11 +16,10 @@ jobs:
           echo "apr"=`(echo ${{env.RELEASE_APR}})` >> $GITHUB_OUTPUT
           echo $GITHUB_OUTPUT
   print_output:
-    needs: ["evaluate"]
     runs-on: "ubuntu-latest"
     steps:
       - name: get-out
         id: Getout
         run: |
-          echo ${{needs.evaluate.outputs.apr}}
+          echo ${{join(jobs.evaluate.outputs.*, '\n')}}
     
