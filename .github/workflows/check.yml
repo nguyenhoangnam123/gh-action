@@ -15,7 +15,7 @@ jobs:
         id: GetAPR
         run: |
           echo "test=hello" >> $GITHUB_OUTPUT
-          echo "apr1=`${{env.RELEASE_APR}}`" >> $GITHUB_OUTPUT
+          echo "apr1=${{env.RELEASE_APR}}" >> $GITHUB_OUTPUT
   run:
     needs: ["evaluate"]
     runs-on: "ubuntu-latest"
@@ -31,5 +31,5 @@ jobs:
         id: Getout
         run: echo "123"
         env:
-          OUT: ${{join(needs.evaluate.outputs.*, '\n')}}
+          OUT: ${{join(needs.evaluate.outputs.apr, '\n')}}
     
