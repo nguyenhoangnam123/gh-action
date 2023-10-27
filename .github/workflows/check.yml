@@ -1,0 +1,26 @@
+on:
+  workflow_dispatch:
+env:
+  FREEZE: 1
+  RELEASE_APR: "nguyenhoangnam123, test"
+
+jobs:
+  evaluate:
+    runs-on: "ubuntu-latest"
+    outputs:
+      apr: ${{steps.evaluate.outputs.apr}}
+    steps:
+      - name: apr
+        id: Get APR
+        run: |
+          - echo "apr"=`(echo ${{env.RELEASE_APR}})` >> $GITHUB_OUTPUT
+          - echo $GITHUB_OUTPUT
+  print_output:
+    needs: ["evaluate"]
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: get-out
+        id: Get out
+        run: |
+          - echo ${{needs.evaluate.outputs.apr}}
+    
