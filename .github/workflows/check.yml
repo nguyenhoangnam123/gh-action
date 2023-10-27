@@ -15,7 +15,7 @@ jobs:
         id: GetAPR
         run: |
           echo "test"=`(echo hello)` >> $GITHUB_OUTPUT
-          echo "apr1"=`(echo ${{env.RELEASE_APR}})` >> $GITHUB_OUTPUT
+          echo "apr1"=`(echo ${{env.RELEASE_APR}} | jq -R 'split(",")')` >> $GITHUB_OUTPUT
   run:
     needs: ["evaluate"]
     runs-on: "ubuntu-latest"
