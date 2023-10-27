@@ -21,7 +21,7 @@ jobs:
   run:
     needs: ["evaluate"]
     runs-on: "ubuntu-latest"
-    if: contains(needs.evaluate.outputs.apr, github.actor) && needs.evaluate.outputs.frozen == "true"
+    if: contains(needs.evaluate.outputs.apr, github.actor) && needs.evaluate.outputs.frozen == 'true'
     steps:
       - name: run
         run: echo "run"
