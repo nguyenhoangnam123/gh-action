@@ -13,7 +13,7 @@ jobs:
       - name: apr
         id: GetAPR
         run: |
-          echo "apr"=`(echo ${{env.RELEASE_APR}})` >> $GITHUB_OUTPUT
+          echo "apr=$(echo ${{env.RELEASE_APR}})" >> $GITHUB_OUTPUT
           echo $GITHUB_OUTPUT
   print_output:
     runs-on: "ubuntu-latest"
