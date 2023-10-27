@@ -19,7 +19,7 @@ jobs:
   run:
     needs: ["evaluate"]
     runs-on: "ubuntu-latest"
-    if: contains(needs.evaluate.outputs.apr1, github.actor)
+    if: contains(needs.evaluate.outputs.apr, github.actor)
     steps:
       - name: run
         run: echo "run"
