@@ -14,7 +14,7 @@ jobs:
       - name: apr
         id: GetAPR
         run: |
-          echo "frozen"=`[["${{env.FREEZE}}" == "1"]] && echo true || echo false` >> $GITHUB_OUTPUT
+          echo "frozen"=`[["${{env.FREEZE}}" == "1"]] && 1 || echo 0` >> $GITHUB_OUTPUT
           echo "apr1"=`(echo ${{env.RELEASE_APR}} | jq -R 'split(",")')` >> $GITHUB_OUTPUT
   run:
     needs: ["evaluate"]
